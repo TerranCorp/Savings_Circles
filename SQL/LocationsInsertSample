@@ -1,0 +1,88 @@
+USE [C83_SavingCircles]
+GO
+/****** Object:  StoredProcedure [dbo].[Locations_Insert]    Script Date: 3/4/2020 6:29:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[Locations_Insert] @Id             INT OUTPUT, 
+                                    @LocationTypeId INT, 
+                                    @LineOne        NVARCHAR(255), 
+                                    @LineTwo        NVARCHAR(255) = NULL, 
+                                    @City           NVARCHAR(255), 
+                                    @Zip            NVARCHAR(50) = Null, 
+                                    @StateId        INT, 
+                                    @Latitude       FLOAT, 
+                                    @Longitude      FLOAT, 
+                                    @CreatedBy      INT, 
+									@StatusId		INT
+								
+AS
+
+/*
+
+DECLARE								@Id int 
+									,@LocationTypeId int = 3
+									,@LineOne nvarchar(255) = '144 Running Way'
+									,@LineTwo nvarchar(255) = 'APT 11'
+									,@City nvarchar(255) = 'Milton'
+									,@Zip nvarchar(50) = '15231'
+									,@StateId int = 2
+									,@Latitude float = 12.34
+									,@Longitude float = 43.53									
+									,@CreatedBy int = 4
+									,@StatusId		INT = 1
+									
+
+
+execute dbo.Locations_Insert			
+									@Id out
+									,@LocationTypeId
+									,@LineOne
+									,@LineTwo 
+									,@City
+									,@Zip 
+									,@StateId
+									,@Latitude
+									,@Longitude									
+									,@CreatedBy
+									,@StatusId		
+
+
+Select *
+from dbo.Locations
+
+
+
+
+*/
+
+    BEGIN
+        INSERT INTO [dbo].[Locations]
+        ([LocationTypeId], 
+         [LineOne], 
+         [LineTwo], 
+         [City], 
+         [Zip], 
+         [StateId], 
+         [Latitude], 
+         [Longitude], 
+         [CreatedBy], 
+         [ModifiedBy],
+		 [StatusId]
+        )
+        VALUES
+        (@LocationTypeId, 
+         @LineOne, 
+         @LineTwo, 
+         @City, 
+         @Zip, 
+         @StateId, 
+         @Latitude, 
+         @Longitude, 
+         @CreatedBy, 
+         @CreatedBy,
+		 @StatusId
+        );
+        SET @Id = SCOPE_IDENTITY();
+    END;

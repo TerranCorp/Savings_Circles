@@ -1,0 +1,59 @@
+USE [C83_SavingCircles]
+GO
+/****** Object:  StoredProcedure [dbo].[Locations_Select_ByCreatedBy]    Script Date: 3/4/2020 6:29:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[Locations_Select_ByCreatedBy] @CreatedBy INT,
+												@PageIndex INT,
+												@PageSize INT
+AS
+
+/*
+
+DECLARE		@CreatedBy int = 4,
+			@PageIndex INT = 1,
+			@PageSize INT = 2
+
+execute [dbo].[Locations_Select_ByCreatedBy]  @CreatedBy
+											,@PageIndex
+											,@PageSize
+
+
+*/
+
+    BEGIN
+
+	DECLARE @Offset INT= @PageSize * @PageIndex;
+
+        SELECT L.Id, 
+               [LocationTypeId], 
+               [LineOne], 
+               [LineTwo], 
+               [City], 
+               [Zip], 
+               [StateId], 
+               [Latitude], 
+               [Longitude], 
+               [DateCreated], 
+               [DateModified], 
+               [CreatedBy], 
+               [ModifiedBy],
+
+			   
+			   
+			   US.[Id],
+			   US.[Name] as 'Status',
+			   [TotalCount] = COUNT(1) OVER()
+
+        FROM [dbo].[Locations] as L
+		
+		Join dbo.UserStatus as US
+		on L.StatusId = US.Id
+
+        WHERE @CreatedBy = L.CreatedBy
+
+		ORDER BY [DateModified]
+        OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY;
+    END;
