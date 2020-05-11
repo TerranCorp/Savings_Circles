@@ -20,8 +20,11 @@ Tools: Visual Studio 2019, Visual Code 2019, SQL Management Studio 2019, Postman
 In this repository you will find:
 
 -Previews of code in C# and React JSX (JavaScript)
+
 -Stored Procedures for SQL relational database
+
 -Screenshots of what the web application looks like
+
 -Api Controllers with their respective services
 
 
