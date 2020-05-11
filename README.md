@@ -9,8 +9,11 @@ A simplified list of tools and technologies that were used to build this applica
 ***********************************************
 
 Front-end: JavaScript, React, HTML5, CSS3, Axios, AJAX, Bootstrap 4, Google Maps
+
 Middleware: ASP.NET, C#, ADO.NET, .NET Core 2.2
+
 Backend: SQL
+
 Tools: Visual Studio 2019, Visual Code 2019, SQL Management Studio 2019, Postman
 
 ***********************************************
