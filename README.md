@@ -8,7 +8,7 @@ A simplified list of tools and technologies that were used to build this applica
 
 ***********************************************
 
-Front-end: JavaScript, React, HTML5, CSS3, Axios, AJAX, Bootstrap 4
+Front-end: JavaScript, React, HTML5, CSS3, Axios, Bootstrap 4
 
 Middleware: ASP.NET, C#, ADO.NET, .NET Core 2.2
 
